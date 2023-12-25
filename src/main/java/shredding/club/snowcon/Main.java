@@ -1,4 +1,4 @@
-package shredding.club;
+package shredding.club.snowcon;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
