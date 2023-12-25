@@ -47,7 +47,7 @@
         <artifactId>javafx-maven-plugin</artifactId>
         <version>0.0.8</version>
         <configuration>
-          <mainClass>shredding.club.App</mainClass>
+          <mainClass>shredding.club.Main</mainClass>
         </configuration>
       </plugin>
 
