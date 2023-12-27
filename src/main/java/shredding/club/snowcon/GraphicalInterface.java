@@ -3,6 +3,8 @@ package shredding.club.snowcon;
 
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 
@@ -16,7 +18,6 @@ import javafx.stage.Stage;
 public class GraphicalInterface extends Application
 {
      
-
     public static void launchGUI(String[] args)
     {
         launch(args);
@@ -24,13 +25,15 @@ public class GraphicalInterface extends Application
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        AnchorPane root = new AnchorPane();
-
-        Scene scene = new Scene(root, 300, 300);
+        Parent root = FXMLLoader.load(getClass().getResource("./Main.fxml"));
+            
+        Scene scene = new Scene(root);
 
         primaryStage.setScene(scene);
 
-        primaryStage.setTitle("TESTING");
+        primaryStage.setResizable(false);
+
+        primaryStage.setTitle("Snowcon");
 
         primaryStage.show();
 
