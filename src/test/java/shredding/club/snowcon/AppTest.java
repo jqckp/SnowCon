@@ -1,4 +1,4 @@
-package shredding.club;
+package shredding.club.snowcon;
 
 
 import org.junit.jupiter.api.Test;
