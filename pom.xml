@@ -62,7 +62,7 @@
         <resource>
           <directory>src/main/java/shredding/club/snowcon</directory>
             <includes>
-              <include>/View/*.fxml</include>
+              <include>/view/*.fxml</include>
             </includes>
           <targetPath>${project.build.directory}/classes/shredding/club/snowcon</targetPath>
         </resource>
