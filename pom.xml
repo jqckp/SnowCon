@@ -4,7 +4,7 @@
   <groupId>shredding.club</groupId>
   <artifactId>snowcon</artifactId>
   <packaging>jar</packaging>
-  <version>1.0.1</version>
+  <version>1.0</version>
   <name>snowcon</name>
   <url>http://maven.apache.org</url>
   
@@ -62,7 +62,7 @@
         <resource>
           <directory>src/main/java/shredding/club/snowcon</directory>
             <includes>
-              <include>/*.fxml</include>
+              <include>/View/*.fxml</include>
             </includes>
           <targetPath>${project.build.directory}/classes/shredding/club/snowcon</targetPath>
         </resource>
@@ -104,8 +104,9 @@
         <configuration>
             <archive>
                 <manifest>
-                  <addClasspath>true</addClasspath>
-                  <mainClass>shredding.club.snowcon.Main</mainClass>
+                    <addClasspath>true</addClasspath>
+                    <mainClass>shredding.club.snowcon.Main</mainClass>
+                    <classpathPrefix>lib</classpathPrefix>
                 </manifest>
             </archive>
             <includes>
@@ -119,7 +120,16 @@
         <artifactId>maven-shade-plugin</artifactId>
         <version>3.5.1</version>
         <configuration>
+        
+          <transformers>
+                          
+            <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                <mainClass>shredding.club.snowcon.Main</mainClass>
+            </transformer>
+          </transformers>
+
           <createDependencyReducedPom>false</createDependencyReducedPom>
+          
         </configuration>
         <executions>
           <execution>
