@@ -1,6 +1,6 @@
 package shredding.club.snowcon.controller;
 
-public class MainController 
+public class DashboardController 
 {
     
 }

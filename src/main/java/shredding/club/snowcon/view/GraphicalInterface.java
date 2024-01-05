@@ -26,7 +26,7 @@ public class GraphicalInterface extends Application
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        String path = "./Main.fxml";
+        String path = "./Dashboard.fxml";
 
         Parent root = FXMLLoader.load(getClass().getResource(path));
             
