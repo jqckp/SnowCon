@@ -1,11 +1,20 @@
 package shredding.club.snowcon.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
+import javafx.scene.Node;
+
 
 public class DashboardController implements Initializable
 {
@@ -27,6 +36,12 @@ public class DashboardController implements Initializable
     @FXML
     private Button viewSugarConditions;
 
+    private Stage stage;
+
+    private Scene scene;
+
+    private Parent root;
+
 
 
     @Override
@@ -36,21 +51,53 @@ public class DashboardController implements Initializable
     }
 
     @FXML
-    private void seeAppSkiConditions()
+    private void seeAppSkiConditions(ActionEvent event)
     {
-        System.out.println("App ski mountain is open!");
+        try 
+        {
+            root = FXMLLoader.load(getClass().getResource("../view/AppSkiMountain.fxml"));
+            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) 
+        {
+            System.out.println("Not found");
+        }
     }
 
     @FXML
-    private void seeBeechConditions()
+    private void seeBeechConditions(ActionEvent event)
     {
-        System.out.println("Beech mountain is open!");
+        try 
+        {
+            root = FXMLLoader.load(getClass().getResource("../view/BeechMountain.fxml"));
+            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) 
+        {
+            System.out.println("Not found");
+        }
+
     }
 
     @FXML
-    private void seeSugarConditions()
+    private void seeSugarConditions(ActionEvent event)
     {
-        System.out.println("Sugar mountain is open!");
+        try 
+        {
+            root = FXMLLoader.load(getClass().getResource("../view/SugarMountain.fxml"));
+            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) 
+        {
+            System.out.println("Not found");
+        }
+        
     }
 
 
