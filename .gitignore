@@ -13,7 +13,7 @@ buildNumber.properties
 .vscode
 
 # contains private API key
-main/java/shredding/club/snowcon/model/Key.java
+src/main/java/shredding/club/snowcon/model/Key.java
 
 # Eclipse m2e generated files
 # Eclipse Core
