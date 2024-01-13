@@ -13,15 +13,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import shredding.club.snowcon.model.Key;
+import shredding.club.snowcon.model.Weather;
 import javafx.scene.Node;
 
 
 public class DashboardController implements Initializable
 {
 
-    private static final String app_ski_view_path = "../view/AppSkiMountain.fxml";
-    private static final String beech_view_path = "../view/BeechMountain.fxml";
-    private static final String sugar_view_path = "../view/SugarMountain.fxml";
+    private static final String APP_SKI_MTN_VIEW = "../view/AppSkiMountain.fxml";
+    private static final String BEECH_MTN_VIEW = "../view/BeechMountain.fxml";
+    private static final String SUGAR_MTN_VIEW = "../view/SugarMountain.fxml";
 
     @FXML
     private ImageView appSkiWeatherIcon;
@@ -47,30 +49,40 @@ public class DashboardController implements Initializable
 
     private Parent root;
 
+    private Weather weatherInfo;
+
 
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) 
     {
+        weatherInfo = new Weather();
+
+        for (int i = 0; i < Weather.CITIES.length; i++)
+        {
+            weatherInfo.callWeatherAPI(Key.API_KEY, Weather.CITIES[i], Weather.AMERICAN_UNITS);
+        }
+
         
+
     }
 
     @FXML
     private void seeAppSkiConditions(ActionEvent event)
     {
-        switchScene(event, app_ski_view_path);
+        switchScene(event, APP_SKI_MTN_VIEW);
     }
 
     @FXML
     private void seeBeechConditions(ActionEvent event)
     {
-        switchScene(event, beech_view_path);
+        switchScene(event, BEECH_MTN_VIEW);
     }
 
     @FXML
     private void seeSugarConditions(ActionEvent event)
     {
-        switchScene(event, sugar_view_path);
+        switchScene(event, SUGAR_MTN_VIEW);
     }
 
     private void switchScene(ActionEvent event, String path)
