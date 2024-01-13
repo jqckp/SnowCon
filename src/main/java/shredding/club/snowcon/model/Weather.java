@@ -3,13 +3,26 @@ package shredding.club.snowcon.model;
 import java.util.HashMap;
 import java.util.List;
 
+import com.google.gson.Gson;
+
 
 public class Weather 
 {
-    public static final String baseURL = "http://api.weatherbit.io/v2.0/current";
+    public static final String BASE_URL = "http://api.weatherbit.io/v2.0/current";
 
+    //Fahrenheit (F, mph, in)
+    public static final char AMERICAN_UNITS = 'I';
+
+    //[DEFAULT] Metric (Celsius, m/s, mm)
+    public static final char METRIC_UNITS = 'M';
+
+    //Scientific (Kelvin, m/s, mm)
+    public static final char SCIENTIFIC_UNITS = 'S';
+
+    private Gson gson;
+    
     //Root list of json response
-    public List<Weather> data;
+    private List<Weather> data;
 
     private HashMap<String, String> queryParameters;
 
@@ -57,6 +70,15 @@ public class Weather
     //Text weather description.
     private String description;
 
+    //Weather icon code.
+    private String icon;
+
+
+    public Weather()
+    {
+    
+    }
+
     public Weather
     (
         String sunrise,
@@ -72,7 +94,8 @@ public class Weather
         double precip,
         int snow,
         double clouds,
-        String description
+        String description,
+        String icon
     )
     {
         this.sunrise = sunrise;
@@ -88,6 +111,15 @@ public class Weather
         this.snow = snow;
         this.clouds = clouds;
         this.description = description;
+        this.icon = icon;
+
+    }
+
+    public void callWeatherAPI(String key, String city, char units)
+    {
+        gson = new Gson();
+
+
 
     }
 
@@ -159,6 +191,11 @@ public class Weather
     public String getDescription() 
     {
         return data.getFirst().weather.description;
+    }
+
+    public String getIcon()
+    {
+        return data.getFirst().weather.icon;
     }
 
   
