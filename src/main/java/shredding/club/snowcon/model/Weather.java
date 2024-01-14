@@ -18,9 +18,9 @@ public class Weather
     public static final String BASE_URL = "http://api.weatherbit.io/v2.0/current";
 
     //Cities to get weather data on (where the ski resorts are)
-    public static final String[] CITIES = {"Blowing Rock, NC",
-                                           "Sugar Mountain, NC",
-                                           "Beech Mountain, NC"
+    public static final String[] CITIES = {"Blowing_Rock",
+                                           "Sugar_Mountain",
+                                           "Beech_Mountain"
                                           };
 
     //Fahrenheit (F, mph, in)
@@ -80,6 +80,8 @@ public class Weather
     //Weather icon code.
     private String icon;
 
+    //Weather object of json response containing image 
+    //code and textual description of weather
     private Weather weather;
 
     public Weather[] weatherData;
@@ -89,6 +91,8 @@ public class Weather
     private HttpClient client;
 
     private HttpResponse<String> response;
+
+    private HttpRequest request;
 
 
     public Weather()
@@ -132,37 +136,45 @@ public class Weather
 
     }
 
-    public void callWeatherAPI(String key, String city, char units)
+    public void callWeatherAPI(String key, char units)
     {
         client = HttpClient.newHttpClient();
         weatherData = new Weather[CITIES.length];
         gson = new Gson();
 
-        for (int i = 0; i < weatherData.length; i++)
+        for (int index = 0; index < weatherData.length; index++)
         {
 
-            weatherData[i] = new Weather();
+            weatherData[index] = new Weather();
 
             try 
             {
-                HttpRequest request = HttpRequest.newBuilder()
-                .uri(new URI(String.format("%s", Weather.BASE_URL)))
+                request = HttpRequest.newBuilder()
+                .uri(generateURI(key, units, CITIES[index]))
                 .GET()
                 .build();
     
                 response = client.send(request, BodyHandlers.ofString());
+
+                System.out.println(response.body());
     
-                weatherData[i] = gson.fromJson(response.body(), Weather.class);
+                //weatherData[index] = gson.fromJson(response.body(), Weather.class);
     
-            } catch (URISyntaxException | IOException | InterruptedException e) 
+            } catch (URISyntaxException | IOException | InterruptedException ex) 
             {
     
-                e.printStackTrace();
+                ex.printStackTrace();
             }
 
         }
         
 
+    }
+
+    private URI generateURI(String key, char units, String city) throws URISyntaxException
+    {
+        return new URI(String.format("%s?key=%s&units=%c&city=%s", 
+            BASE_URL, key, units, city));
     }
 
     public String getSunrise() 
