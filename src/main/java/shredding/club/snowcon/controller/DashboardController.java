@@ -1,17 +1,8 @@
 package shredding.club.snowcon.controller;
 
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.net.http.HttpResponse.BodyHandlers;
 import java.util.ResourceBundle;
-
-import com.google.gson.Gson;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -67,9 +58,6 @@ public class DashboardController implements Initializable
         weatherInfo = new Weather();
 
         weatherInfo.callWeatherAPI(Key.API_KEY, Weather.AMERICAN_UNITS);
-
-        
-
     }
 
     @FXML

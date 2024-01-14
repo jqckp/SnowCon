@@ -1,5 +1,6 @@
 package shredding.club.snowcon.model;
 
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -9,9 +10,14 @@ import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Weather 
 {
     //Base URL to access API
@@ -51,7 +57,7 @@ public class Weather
     private String state_code;
 
     //Wind speed (Default m/s).
-    private int wind_spd;
+    private double wind_spd;
 
     //Verbal wind direction.
     private String wind_cdir_full;
@@ -69,7 +75,7 @@ public class Weather
     private double precip;
 
     //Snowfall (default mm/hr).
-    private int snow;
+    private double snow;
 
     //Cloud coverage (%).
     private double clouds;
@@ -87,6 +93,8 @@ public class Weather
     public Weather[] weatherData;
 
     private Gson gson;
+
+    private ObjectMapper objmapper;
 
     private HttpClient client;
 
@@ -107,13 +115,13 @@ public class Weather
         String ob_time,
         String city_name,
         String state_code,
-        int wind_spd,
+        double wind_spd,
         String wind_cdir_full,
         double temp,
         double app_temp,
         double vis,
         double precip,
-        int snow,
+        double snow,
         double clouds,
         String description,
         String icon
@@ -140,7 +148,8 @@ public class Weather
     {
         client = HttpClient.newHttpClient();
         weatherData = new Weather[CITIES.length];
-        gson = new Gson();
+        objmapper = new ObjectMapper();
+        
 
         for (int index = 0; index < weatherData.length; index++)
         {
@@ -158,7 +167,11 @@ public class Weather
 
                 System.out.println(response.body());
     
-                //weatherData[index] = gson.fromJson(response.body(), Weather.class);
+                weatherData[index] = objmapper.readValue(response.body(), Weather.class);
+
+                System.out.println(weatherData[index].getTemp());
+                System.out.println(weatherData[index].getWind_spd());
+                
     
             } catch (URISyntaxException | IOException | InterruptedException ex) 
             {
@@ -177,79 +190,100 @@ public class Weather
             BASE_URL, key, units, city));
     }
 
+    @JsonProperty
     public String getSunrise() 
     {
         return data.getFirst().sunrise;
     }
 
+    @JsonProperty
     public String getSunset() 
     {
         return data.getFirst().sunset;
     }
 
+    @JsonProperty
     public String getOb_time() 
     {
         return data.getFirst().ob_time;
     }
 
+    @JsonProperty
     public String getCity_name() 
     {
         return data.getFirst().city_name;
     }
 
+    @JsonProperty
     public String getState_code() 
     {
         return data.getFirst().state_code;
     }
 
-    public int getWind_spd() 
+    @JsonProperty
+    public double getWind_spd() 
     {
         return data.getFirst().wind_spd;
     }
 
+    @JsonProperty
     public String getWind_cdir_full() 
     {
         return data.getFirst().wind_cdir_full;
     }
 
+    @JsonProperty
     public double getTemp() 
     {
         return data.getFirst().temp;
     }
 
+    @JsonProperty
     public double getApp_temp() 
     {
         return data.getFirst().app_temp;
     }
 
+    @JsonProperty
     public double getVis() 
     {
         return data.getFirst().vis;
     }
 
+    @JsonProperty
     public double getPrecip() 
     {
         return data.getFirst().precip;
     }
 
-    public int getSnow() 
+    @JsonProperty
+    public double getSnow() 
     {
         return data.getFirst().snow;
     }
 
+    @JsonProperty
     public double getClouds() 
     {
         return data.getFirst().clouds;
     }
 
+    @JsonProperty
     public String getDescription() 
     {
         return data.getFirst().weather.description;
     }
 
+    @JsonProperty
     public String getIcon()
     {
         return data.getFirst().weather.icon;
+    }
+
+    @JsonProperty
+    public List<Weather> getData() 
+    {
+        return this.data;
     }
 
   
