@@ -48,16 +48,20 @@ public class DashboardController implements Initializable
 
     private Parent root;
 
-    private Weather weatherInfo;
+    private Weather weather;
+
+    private Weather[] weatherInfo;
 
 
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) 
     {
-        weatherInfo = new Weather();
+        weather = new Weather();
 
-        weatherInfo.callWeatherAPI(Key.API_KEY, Weather.AMERICAN_UNITS);
+        weatherInfo = weather.callWeatherAPI(Key.API_KEY, Weather.AMERICAN_UNITS);
+
+        
     }
 
     @FXML

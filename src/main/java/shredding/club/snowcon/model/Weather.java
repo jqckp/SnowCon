@@ -12,9 +12,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
 
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -24,10 +22,12 @@ public class Weather
     public static final String BASE_URL = "http://api.weatherbit.io/v2.0/current";
 
     //Cities to get weather data on (where the ski resorts are)
-    public static final String[] CITIES = {"Blowing_Rock",
-                                           "Sugar_Mountain",
-                                           "Beech_Mountain"
-                                          };
+    public static final String[] CITIES = 
+    {
+        "Blowing_Rock",
+        "Sugar_Mountain",
+        "Beech_Mountain"
+    };
 
     //Fahrenheit (F, mph, in)
     public static final char AMERICAN_UNITS = 'I';
@@ -92,8 +92,6 @@ public class Weather
 
     public Weather[] weatherData;
 
-    private Gson gson;
-
     private ObjectMapper objmapper;
 
     private HttpClient client;
@@ -144,16 +142,14 @@ public class Weather
 
     }
 
-    public void callWeatherAPI(String key, char units)
+    public Weather[] callWeatherAPI(String key, char units)
     {
         client = HttpClient.newHttpClient();
         weatherData = new Weather[CITIES.length];
         objmapper = new ObjectMapper();
         
-
         for (int index = 0; index < weatherData.length; index++)
         {
-
             weatherData[index] = new Weather();
 
             try 
@@ -164,24 +160,15 @@ public class Weather
                 .build();
     
                 response = client.send(request, BodyHandlers.ofString());
-
-                System.out.println(response.body());
     
                 weatherData[index] = objmapper.readValue(response.body(), Weather.class);
-
-                System.out.println(weatherData[index].getTemp());
-                System.out.println(weatherData[index].getWind_spd());
                 
-    
             } catch (URISyntaxException | IOException | InterruptedException ex) 
             {
-    
                 ex.printStackTrace();
             }
-
         }
-        
-
+        return weatherData;
     }
 
     private URI generateURI(String key, char units, String city) throws URISyntaxException
