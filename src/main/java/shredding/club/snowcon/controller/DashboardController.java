@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import shredding.club.snowcon.model.Key;
@@ -42,6 +43,21 @@ public class DashboardController implements Initializable
     @FXML
     private Button viewSugarConditions;
 
+    @FXML
+    private Label appSkiTemperature;
+
+    @FXML
+    private Label appSkiWindSpeed;
+
+    @FXML
+    private Label appSkiVisibility;
+
+    @FXML
+    private Label appSkiSnow;
+
+    @FXML
+    private Label appSkiPrecipitation;
+
     private Stage stage;
 
     private Scene scene;
@@ -57,7 +73,7 @@ public class DashboardController implements Initializable
     {
         
 
-        weatherInfo = Weather.callWeatherAPI(Key.API_KEY, Weather.AMERICAN_UNITS);
+        //Weather.callWeatherAPI(Key.API_KEY, Weather.AMERICAN_UNITS);
 
         
     }
@@ -78,6 +94,11 @@ public class DashboardController implements Initializable
     private void seeSugarConditions(ActionEvent event)
     {
         switchScene(event, SUGAR_MTN_VIEW);
+    }
+
+    private static void displayAppSkiWeather()
+    {
+
     }
 
     private void switchScene(ActionEvent event, String path)

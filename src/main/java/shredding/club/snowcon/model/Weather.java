@@ -8,6 +8,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
+import java.util.HashMap;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -90,8 +91,6 @@ public class Weather
     //code and textual description of weather
     private Weather weather;
 
-    private static Weather[] weatherData;
-
     private static ObjectMapper objmapper;
 
     private static HttpClient client;
@@ -99,6 +98,8 @@ public class Weather
     private static HttpResponse<String> response;
 
     private static HttpRequest request;
+
+    private static HashMap<String, Weather> weatherData;
 
 
     public Weather()
@@ -142,16 +143,16 @@ public class Weather
 
     }
 
-    public static Weather[] callWeatherAPI(String key, char units)
+    public static HashMap<String, Weather> callWeatherAPI(String key, char units)
     {
         client = HttpClient.newHttpClient();
-        weatherData = new Weather[CITIES.length];
+
+        weatherData = new HashMap<>();
+
         objmapper = new ObjectMapper();
         
-        for (int index = 0; index < weatherData.length; index++)
+        for (int index = 0; index < CITIES.length; index++)
         {
-            weatherData[index] = new Weather();
-
             try 
             {
                 request = HttpRequest.newBuilder()
@@ -161,13 +162,15 @@ public class Weather
     
                 response = client.send(request, BodyHandlers.ofString());
     
-                weatherData[index] = objmapper.readValue(response.body(), Weather.class);
-                
+                weatherData.put(CITIES[index], 
+                    objmapper.readValue(response.body(), Weather.class));
+
             } catch (URISyntaxException | IOException | InterruptedException ex) 
             {
                 ex.printStackTrace();
             }
         }
+
         return weatherData;
     }
 
