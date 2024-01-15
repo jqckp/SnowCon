@@ -90,15 +90,15 @@ public class Weather
     //code and textual description of weather
     private Weather weather;
 
-    public Weather[] weatherData;
+    private static Weather[] weatherData;
 
-    private ObjectMapper objmapper;
+    private static ObjectMapper objmapper;
 
-    private HttpClient client;
+    private static HttpClient client;
 
-    private HttpResponse<String> response;
+    private static HttpResponse<String> response;
 
-    private HttpRequest request;
+    private static HttpRequest request;
 
 
     public Weather()
@@ -142,7 +142,7 @@ public class Weather
 
     }
 
-    public Weather[] callWeatherAPI(String key, char units)
+    public static Weather[] callWeatherAPI(String key, char units)
     {
         client = HttpClient.newHttpClient();
         weatherData = new Weather[CITIES.length];
@@ -171,7 +171,7 @@ public class Weather
         return weatherData;
     }
 
-    private URI generateURI(String key, char units, String city) throws URISyntaxException
+    private static URI generateURI(String key, char units, String city) throws URISyntaxException
     {
         return new URI(String.format("%s?key=%s&units=%c&city=%s", 
             BASE_URL, key, units, city));
