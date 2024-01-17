@@ -2,6 +2,7 @@ package shredding.club.snowcon.controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -64,7 +65,10 @@ public class DashboardController implements Initializable
 
     private Parent root;
 
-    private Weather[] weatherInfo;
+    private Utility util = new Utility();
+
+
+    
 
 
 
@@ -73,7 +77,12 @@ public class DashboardController implements Initializable
     {
         
 
-        //Weather.callWeatherAPI(Key.API_KEY, Weather.AMERICAN_UNITS);
+        //HashMap<String, Weather> data = Weather.callWeatherAPI(Key.API_KEY, Weather.AMERICAN_UNITS);
+
+        for (String city : Weather.CITIES)
+        {
+            displayWeatherConditions(city);
+        }
 
         
     }
@@ -81,41 +90,32 @@ public class DashboardController implements Initializable
     @FXML
     private void seeAppSkiConditions(ActionEvent event)
     {
-        switchScene(event, APP_SKI_MTN_VIEW);
+        util.switchScene(event, APP_SKI_MTN_VIEW);
     }
 
     @FXML
     private void seeBeechConditions(ActionEvent event)
     {
-        switchScene(event, BEECH_MTN_VIEW);
+        util.switchScene(event, BEECH_MTN_VIEW);
     }
 
     @FXML
     private void seeSugarConditions(ActionEvent event)
     {
-        switchScene(event, SUGAR_MTN_VIEW);
+        util.switchScene(event, SUGAR_MTN_VIEW);
     }
 
-    private static void displayAppSkiWeather()
+    private static void displayWeatherConditions(String city)
     {
-
-    }
-
-    private void switchScene(ActionEvent event, String path)
-    {
-        try 
+        switch (city)
         {
-            root = FXMLLoader.load(getClass().getResource(path));
-            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) 
-        {
-            System.out.println("Not found");
+            
         }
-        
+            
     }
+
+
+    
 
 
 

@@ -20,6 +20,8 @@ public class AppSkiController implements Initializable
     @FXML
     private Button backToOverview;
 
+    private Utility util;
+
     private Stage stage;
 
     private Parent root;
@@ -36,17 +38,8 @@ public class AppSkiController implements Initializable
     @FXML
     private void back(ActionEvent event)
     {
-        try 
-        {
-            root = FXMLLoader.load(getClass().getResource("../view/Dashboard.fxml"));
-            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-        } catch (IOException e) 
-        {
-            
-            e.printStackTrace();
-        }
+        util = new Utility();
+        util.switchScene(event, "../view/Dashboard.fxml");
     }
 
 
