@@ -1,6 +1,6 @@
 package shredding.club.snowcon.controller;
 
-
+import shredding.club.snowcon.model.City;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import shredding.club.snowcon.model.Key;
 import shredding.club.snowcon.model.Weather;
@@ -58,6 +59,8 @@ public class DashboardController implements Initializable
 
     private Utility util = new Utility();
 
+    private HashMap<City, Weather> data;
+
 
     
 
@@ -68,9 +71,9 @@ public class DashboardController implements Initializable
     {
         
 
-        //Weather.callWeatherAPI(Key.API_KEY, Weather.AMERICAN_UNITS);
+        data = Weather.callWeatherAPI(Key.API_KEY, Weather.AMERICAN_UNITS);
 
-        
+        displayBlowingRockWeather(data.get(City.BLOWING_ROCK));
 
         
     }
@@ -93,13 +96,24 @@ public class DashboardController implements Initializable
         util.switchScene(event, SUGAR_MTN_VIEW);
     }
 
-    private static void displayWeatherConditions(String city)
+    private void displayWeatherConditions(City city, HashMap<City, Weather> data)
     {
         switch (city)
         {
             
         }
             
+    }
+
+    private void displayBlowingRockWeather(Weather weather)
+    {
+        appSkiTemperature.setText(String.valueOf(weather.getTemp()));
+        appSkiWindSpeed.setText(String.valueOf(weather.getWind_spd()));
+        appSkiVisibility.setText(String.valueOf(weather.getVis()));
+        appSkiSnow.setText(String.valueOf(weather.getSnow()));
+        appSkiPrecipitation.setText(String.valueOf(weather.getPrecip()));
+        appSkiWeatherIcon.setImage(new Image(getClass().getResourceAsStream(
+            String.format("../view/resources/weather_icons/%s.png", weather.getIcon()))));
     }
 
 
