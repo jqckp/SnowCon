@@ -268,6 +268,12 @@ public class Weather
     }
 
     @JsonProperty
+    public Weather getWeather()
+    {
+        return weather;
+    }
+
+    @JsonProperty
     public List<Weather> getData() 
     {
         return this.data;
