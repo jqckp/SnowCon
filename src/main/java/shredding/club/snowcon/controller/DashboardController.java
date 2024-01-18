@@ -1,22 +1,18 @@
 package shredding.club.snowcon.controller;
 
-import java.io.IOException;
+
 import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
 import shredding.club.snowcon.model.Key;
 import shredding.club.snowcon.model.Weather;
-import javafx.scene.Node;
+
 
 
 public class DashboardController implements Initializable
@@ -59,11 +55,6 @@ public class DashboardController implements Initializable
     @FXML
     private Label appSkiPrecipitation;
 
-    private Stage stage;
-
-    private Scene scene;
-
-    private Parent root;
 
     private Utility util = new Utility();
 
@@ -77,12 +68,9 @@ public class DashboardController implements Initializable
     {
         
 
-        //HashMap<String, Weather> data = Weather.callWeatherAPI(Key.API_KEY, Weather.AMERICAN_UNITS);
+        //Weather.callWeatherAPI(Key.API_KEY, Weather.AMERICAN_UNITS);
 
-        for (String city : Weather.CITIES)
-        {
-            displayWeatherConditions(city);
-        }
+        
 
         
     }
