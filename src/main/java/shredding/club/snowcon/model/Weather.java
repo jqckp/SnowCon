@@ -22,14 +22,6 @@ public class Weather
     //Base URL to access API
     public static final String BASE_URL = "http://api.weatherbit.io/v2.0/current";
 
-    //Cities to get weather data on (where the ski resorts are)
-    public static final String[] CITIES = 
-    {
-        "Blowing_Rock",
-        "Sugar_Mountain",
-        "Beech_Mountain"
-    };
-
     //Fahrenheit (F, mph, in)
     public static final char AMERICAN_UNITS = 'I';
 
@@ -99,7 +91,7 @@ public class Weather
 
     private static HttpRequest request;
 
-    private static HashMap<String, Weather> weatherData;
+    private static HashMap<City, Weather> weatherData;
 
 
     public Weather()
@@ -143,7 +135,7 @@ public class Weather
 
     }
 
-    public static HashMap<String, Weather> callWeatherAPI(String key, char units)
+    public static HashMap<City, Weather> callWeatherAPI(String key, char units)
     {
         client = HttpClient.newHttpClient();
 
@@ -151,18 +143,18 @@ public class Weather
 
         objmapper = new ObjectMapper();
         
-        for (int index = 0; index < CITIES.length; index++)
+        for (City city : City.values())
         {
             try 
             {
                 request = HttpRequest.newBuilder()
-                .uri(generateURI(key, units, CITIES[index]))
+                .uri(generateURI(key, units, city))
                 .GET()
                 .build();
     
                 response = client.send(request, BodyHandlers.ofString());
     
-                weatherData.put(CITIES[index], 
+                weatherData.put(city, 
                     objmapper.readValue(response.body(), Weather.class));
 
             } catch (URISyntaxException | IOException | InterruptedException ex) 
@@ -174,10 +166,15 @@ public class Weather
         return weatherData;
     }
 
-    private static URI generateURI(String key, char units, String city) throws URISyntaxException
+    private static URI generateURI(String key, char units, City city) throws URISyntaxException
     {
         return new URI(String.format("%s?key=%s&units=%c&city=%s", 
-            BASE_URL, key, units, city));
+            BASE_URL, key, units, city.toString()));
+    }
+
+    public static HashMap<City, Weather> getWeatherData()
+    {
+        return weatherData;
     }
 
     @JsonProperty
