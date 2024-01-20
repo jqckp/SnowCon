@@ -12,6 +12,9 @@ buildNumber.properties
 # VSCode settings file
 .vscode
 
+#list of current problems to fix as well as planning
+problems-plans.txt
+
 # contains private API key
 src/main/java/shredding/club/snowcon/model/Key.java
 
