@@ -28,7 +28,7 @@ public class Utility
             stage.show();
         } catch (IOException e) 
         {
-            System.out.println("Incorrect path or file doesn't exist");
+            e.printStackTrace();
         }
     }
 }
