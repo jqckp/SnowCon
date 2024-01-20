@@ -22,14 +22,6 @@ public class Weather
     //Base URL to access API
     public static final String BASE_URL = "http://api.weatherbit.io/v2.0/current";
 
-    //Fahrenheit (F, mph, in)
-    public static final char AMERICAN_UNITS = 'I';
-
-    //[DEFAULT] Metric (Celsius, m/s, mm)
-    public static final char METRIC_UNITS = 'M';
-
-    //Scientific (Kelvin, m/s, mm)
-    public static final char SCIENTIFIC_UNITS = 'S';
     
     //Root list of json response
     private List<Weather> data;
@@ -135,7 +127,7 @@ public class Weather
 
     }
 
-    public static HashMap<City, Weather> callWeatherAPI(String key, char units)
+    public static HashMap<City, Weather> callWeatherAPI(String key, Unit unit)
     {
         client = HttpClient.newHttpClient();
 
@@ -148,7 +140,7 @@ public class Weather
             try 
             {
                 request = HttpRequest.newBuilder()
-                .uri(generateURI(key, units, city))
+                .uri(generateURI(key, unit, city))
                 .GET()
                 .build();
     
@@ -166,10 +158,10 @@ public class Weather
         return weatherData;
     }
 
-    private static URI generateURI(String key, char units, City city) throws URISyntaxException
+    private static URI generateURI(String key, Unit unit, City city) throws URISyntaxException
     {
         return new URI(String.format("%s?key=%s&units=%c&city=%s", 
-            BASE_URL, key, units, city.toString()));
+            BASE_URL, key, unit.symbol, city.toString()));
     }
 
     public static HashMap<City, Weather> getWeatherData()
@@ -280,7 +272,7 @@ public class Weather
     }
 
   
-
+    
     
     
 }

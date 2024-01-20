@@ -15,9 +15,8 @@ public class Utility
     public static Parent root;
     public static Stage stage;
     public static Scene scene;
+
     
-
-
     public void switchScene(ActionEvent event, String scenePath)
     {
         try 
