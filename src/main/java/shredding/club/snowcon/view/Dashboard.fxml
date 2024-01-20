@@ -11,17 +11,17 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@resources/styling/Dashboard.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="shredding.club.snowcon.controller.DashboardController">
    <children>
-      <ImageView id="beechWeatherIcon" fx:id="beechWeatherIcon" fitHeight="112.0" fitWidth="119.0" layoutX="242.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView id="beechWeatherIcon" fx:id="beechWeatherIcon" fitHeight="76.0" fitWidth="100.0" layoutX="262.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@resources/weather_icons/c04n.png" />
          </image>
       </ImageView>
-      <ImageView id="appSkiWeatherIcon" fx:id="appSkiWeatherIcon" fitHeight="112.0" fitWidth="119.0" layoutX="39.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView id="appSkiWeatherIcon" fx:id="appSkiWeatherIcon" fitHeight="79.0" fitWidth="76.0" layoutX="57.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@resources/weather_icons/c02d.png" />
          </image>
       </ImageView>
-      <ImageView id="sugarWeatherIcon" fx:id="sugarWeatherIcon" fitHeight="112.0" fitWidth="119.0" layoutX="442.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView id="sugarWeatherIcon" fx:id="sugarWeatherIcon" fitHeight="76.0" fitWidth="100.0" layoutX="460.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@resources/weather_icons/s04d.png" />
          </image>
@@ -32,10 +32,10 @@
       <Label alignment="CENTER" layoutX="45.0" layoutY="165.0" text="Weather Overview:" textFill="WHITE" />
       <Label alignment="CENTER" layoutX="248.0" layoutY="165.0" text="Weather Overview:" textFill="WHITE" />
       <Label alignment="CENTER" layoutX="448.0" layoutY="165.0" text="Weather Overview:" textFill="WHITE" />
-      <Button fx:id="viewAppSkiConditions" alignment="CENTER" layoutX="39.0" layoutY="336.0" mnemonicParsing="false" onAction="#seeAppSkiConditions" prefHeight="25.0" prefWidth="112.0" text="View Conditions" />
+      <Button fx:id="viewAppSkiConditions" alignment="CENTER" layoutX="40.0" layoutY="336.0" mnemonicParsing="false" onAction="#seeAppSkiConditions" prefHeight="25.0" prefWidth="112.0" text="View Conditions" />
       <Button fx:id="viewBeechConditions" alignment="CENTER" layoutX="244.0" layoutY="336.0" mnemonicParsing="false" onAction="#seeBeechConditions" prefHeight="25.0" prefWidth="112.0" text="View Conditions" />
       <Button fx:id="viewSugarConditions" alignment="CENTER" layoutX="443.0" layoutY="336.0" mnemonicParsing="false" onAction="#seeSugarConditions" prefHeight="25.0" prefWidth="112.0" text="View Conditions" />
-      <Group layoutX="13.0" layoutY="184.0">
+      <Group layoutX="14.0" layoutY="182.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6b737b" height="137.0" stroke="BLACK" strokeType="INSIDE" width="164.0" />
             <Label layoutX="10.0" layoutY="8.0" text="Temperature:" textFill="WHITE">
@@ -90,7 +90,22 @@
             </Label>
          </children>
       </Group>
-      <Group layoutX="216.0" layoutY="184.0">
+      <Label alignment="CENTER" layoutX="41.0" layoutY="41.0" text="(Blowing Rock, NC)" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="237.0" layoutY="41.0" text="(Beech Mountain, NC)" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="437.0" layoutY="41.0" text="(Sugar Mountain, NC)" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Label>
+      <Group layoutX="216.0" layoutY="182.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6b737b" height="137.0" stroke="BLACK" strokeType="INSIDE" width="164.0" />
             <Label layoutX="10.0" layoutY="8.0" text="Temperature:" textFill="WHITE">
@@ -118,9 +133,34 @@
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
+            <Label fx:id="appSkiTemperature1" alignment="CENTER" layoutX="103.0" layoutY="8.0" text="(temp)" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="appSkiWindSpeed1" alignment="CENTER" layoutX="103.0" layoutY="33.0" text="(temp)" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="appSkiVisibility1" alignment="CENTER" layoutX="103.0" layoutY="59.0" text="(temp)" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="appSkiSnow1" alignment="CENTER" layoutX="103.0" layoutY="84.0" text="(temp)" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="appSkiPrecipitation1" alignment="CENTER" layoutX="103.0" layoutY="109.0" text="(temp)" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
          </children>
       </Group>
-      <Group layoutX="417.0" layoutY="184.0">
+      <Group layoutX="415.0" layoutY="182.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6b737b" height="137.0" stroke="BLACK" strokeType="INSIDE" width="164.0" />
             <Label layoutX="10.0" layoutY="8.0" text="Temperature:" textFill="WHITE">
@@ -148,22 +188,32 @@
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
+            <Label fx:id="appSkiTemperature2" alignment="CENTER" layoutX="103.0" layoutY="8.0" text="(temp)" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="appSkiWindSpeed2" alignment="CENTER" layoutX="103.0" layoutY="33.0" text="(temp)" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="appSkiVisibility2" alignment="CENTER" layoutX="103.0" layoutY="59.0" text="(temp)" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="appSkiSnow2" alignment="CENTER" layoutX="103.0" layoutY="84.0" text="(temp)" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="appSkiPrecipitation2" alignment="CENTER" layoutX="103.0" layoutY="109.0" text="(temp)" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
          </children>
       </Group>
-      <Label alignment="CENTER" layoutX="41.0" layoutY="145.0" text="(Blowing Rock, NC)" textAlignment="CENTER" textFill="WHITE">
-         <font>
-            <Font name="System Bold Italic" size="12.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" layoutX="236.0" layoutY="145.0" text="(Beech Mountain, NC)" textAlignment="CENTER" textFill="WHITE">
-         <font>
-            <Font name="System Bold Italic" size="12.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" layoutX="437.0" layoutY="145.0" text="(Sugar Mountain, NC)" textAlignment="CENTER" textFill="WHITE">
-         <font>
-            <Font name="System Bold Italic" size="12.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>
