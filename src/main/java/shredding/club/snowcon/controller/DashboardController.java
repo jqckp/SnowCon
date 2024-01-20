@@ -1,5 +1,6 @@
 package shredding.club.snowcon.controller;
 
+import shredding.club.snowcon.model.AppSkiMountain;
 import shredding.club.snowcon.model.City;
 import java.net.URL;
 import java.util.HashMap;
@@ -12,16 +13,19 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import shredding.club.snowcon.model.Key;
+import shredding.club.snowcon.model.Unit;
 import shredding.club.snowcon.model.Weather;
 
 
 
-public class DashboardController implements Initializable
+public class DashboardController implements Initializable, Runnable
 {
 
     private static final String APP_SKI_MTN_VIEW = "../view/AppSkiMountain.fxml";
     private static final String BEECH_MTN_VIEW = "../view/BeechMountain.fxml";
     private static final String SUGAR_MTN_VIEW = "../view/SugarMountain.fxml";
+
+    private static boolean initialized;
 
     @FXML
     private ImageView appSkiWeatherIcon;
@@ -70,13 +74,27 @@ public class DashboardController implements Initializable
     public void initialize(URL arg0, ResourceBundle arg1) 
     {
         
+        if (!initialized)
+        {
+            System.out.println("this has been initialized once");
+            initialized = true;
+        }
+        
+        //data = Weather.callWeatherAPI(Key.API_KEY, Unit.AMERICAN);
 
-        data = Weather.callWeatherAPI(Key.API_KEY, Weather.AMERICAN_UNITS);
+        for (City city : City.values())
+        {
+            //displayWeatherConditions(city, data);
+        }
 
-        displayBlowingRockWeather(data.get(City.BLOWING_ROCK));
+        //AppSkiMountain appSki = new AppSkiMountain();
+
+        //appSki.collectData();
 
         
+        
     }
+    
 
     @FXML
     private void seeAppSkiConditions(ActionEvent event)
@@ -100,6 +118,8 @@ public class DashboardController implements Initializable
     {
         switch (city)
         {
+            case BLOWING_ROCK:
+                displayBlowingRockWeather(data.get(City.BLOWING_ROCK));
             
         }
             
@@ -110,10 +130,17 @@ public class DashboardController implements Initializable
         appSkiTemperature.setText(String.valueOf(weather.getTemp()));
         appSkiWindSpeed.setText(String.valueOf(weather.getWind_spd()));
         appSkiVisibility.setText(String.valueOf(weather.getVis()));
-        appSkiSnow.setText(String.valueOf(weather.getSnow()));
-        appSkiPrecipitation.setText(String.valueOf(weather.getPrecip()));
+        appSkiSnow.setText(String.format("%.2f",weather.getSnow()));
+        appSkiPrecipitation.setText(String.format("%.2f", weather.getPrecip()));
         appSkiWeatherIcon.setImage(new Image(getClass().getResourceAsStream(
             String.format("../view/resources/weather_icons/%s.png", weather.getIcon()))));
+    }
+
+
+    @Override
+    public void run() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'run'");
     }
 
 
