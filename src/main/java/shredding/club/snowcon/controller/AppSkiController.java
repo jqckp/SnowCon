@@ -16,6 +16,8 @@ public class AppSkiController implements Initializable
     private Button backToOverview;
 
     private Utility util;
+    
+    private static boolean initialized;
 
    
     
@@ -23,6 +25,13 @@ public class AppSkiController implements Initializable
     @Override
     public void initialize(URL location, ResourceBundle resources) 
     {
+
+        if(!initialized)
+        {
+            System.out.println("App Ski data has been initialized");
+            initialized = true;
+        }
+
         
     }
 
