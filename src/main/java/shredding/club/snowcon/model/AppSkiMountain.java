@@ -13,47 +13,7 @@ public class AppSkiMountain
 
     private WebDriver driver;
     
-    private String url = "https://appskimtn.com/slope-report";
+    private static final String SLOPE_REPORT_URL = "https://appskimtn.com/slope-report";
 
-    public void collectData()
-    {
-        driver = new ChromeDriver();
-        driver.get(url);
-
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-
-        WebElement button = driver.findElement(By.id("chat-widget-container"));
-
-        button.click();
-
-        WebElement appaltizer = driver.findElement(By.xpath("/html/body/main/article/div/ul[5]/li[1]"));
-
-        System.out.println(appaltizer.getText());
-       
-
-        List<WebElement> slopes = driver.findElements(By.className("slope-report__status-title"));
-
-        for(WebElement data : slopes)
-        {
-            System.out.println(data.getText());
-        }
-
-
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-        driver.close();
-        driver.quit();
-        
-    }
+    
 }
