@@ -18,7 +18,7 @@ import shredding.club.snowcon.model.Weather;
 
 
 
-public class DashboardController implements Initializable, Runnable
+public class DashboardController implements Initializable
 {
 
     private static final String APP_SKI_MTN_VIEW = "../view/AppSkiMountain.fxml";
@@ -76,22 +76,17 @@ public class DashboardController implements Initializable, Runnable
         
         if (!initialized)
         {
-            System.out.println("this has been initialized once");
+            //data = Weather.callWeatherAPI(Key.API_KEY, Unit.AMERICAN);
+            //displayWeatherConditions(data);
+
+           getWebsiteData();
+
+            
+            
             initialized = true;
         }
-        
-        //data = Weather.callWeatherAPI(Key.API_KEY, Unit.AMERICAN);
 
-        for (City city : City.values())
-        {
-            //displayWeatherConditions(city, data);
-        }
-
-        //AppSkiMountain appSki = new AppSkiMountain();
-
-        //appSki.collectData();
-
-        
+        //displayWeatherConditions(data);
         
     }
     
@@ -114,13 +109,51 @@ public class DashboardController implements Initializable, Runnable
         util.switchScene(event, SUGAR_MTN_VIEW);
     }
 
-    private void displayWeatherConditions(City city, HashMap<City, Weather> data)
+
+    private void getWebsiteData()
     {
-        switch (city)
+        Runnable appSkiWebscrape =  () ->
         {
-            case BLOWING_ROCK:
-                displayBlowingRockWeather(data.get(City.BLOWING_ROCK));
-            
+            // AppSkiMountain appSki = new AppSkiMountain();
+            // appSki.collectData();
+        };
+
+        Runnable beechMountainWebscrape = () -> 
+        {
+            System.out.println("Getting data from Beech Mountain site...");
+        };
+
+        Runnable sugarMountainWebscrape = () -> 
+        {
+            System.out.println("Getting data from Sugar Mountain site...");
+        };
+
+        Thread appThread = new Thread(appSkiWebscrape);
+        Thread beechThread = new Thread(beechMountainWebscrape);
+        Thread sugarThread = new Thread(sugarMountainWebscrape);
+
+        appThread.start();
+        beechThread.start();
+        sugarThread.start();
+        
+    }
+
+    private void displayWeatherConditions(HashMap<City, Weather> data)
+    {
+        for (City city : City.values())
+        {
+            switch (city) {
+                case BLOWING_ROCK:
+                    displayBlowingRockWeather(data.get(City.BLOWING_ROCK));
+                    break;
+                
+                case BEECH_MOUNTAIN:
+                    break;
+
+                case SUGAR_MOUNTAIN:
+                    break;
+
+            }
         }
             
     }
@@ -137,11 +170,7 @@ public class DashboardController implements Initializable, Runnable
     }
 
 
-    @Override
-    public void run() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'run'");
-    }
+  
 
 
     
