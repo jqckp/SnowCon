@@ -64,7 +64,7 @@ public class DashboardController implements Initializable
     private Label beechMountainTemperature;
 
     @FXML
-    private Label beechMountainWindspeed;
+    private Label beechMountainWindSpeed;
 
     @FXML
     private Label beechMountainVisibility;
@@ -106,10 +106,10 @@ public class DashboardController implements Initializable
         
         if (!initialized)
         {
-            //data = Weather.callWeatherAPI(Key.API_KEY, Unit.AMERICAN);
-            //displayWeatherConditions(data);
+            data = Weather.callWeatherAPI(Key.API_KEY, Unit.AMERICAN);
+            displayWeatherConditions(data);
 
-            //getWebsiteData();
+            getWebsiteData();
 
             
             
@@ -203,7 +203,7 @@ public class DashboardController implements Initializable
     private void displayBeechMountainWeather(Weather weather)
     {
         beechMountainTemperature.setText(String.valueOf(weather.getTemp()));
-        beechMountainWindspeed.setText(String.valueOf(weather.getWind_spd()));
+        beechMountainWindSpeed.setText(String.valueOf(weather.getWind_spd()));
         beechMountainVisibility.setText(String.valueOf(weather.getVis()));
         beechMountainSnow.setText(String.format("%.2f",weather.getSnow()));
         beechMountainPrecipitation.setText(String.format("%.2f", weather.getPrecip()));
