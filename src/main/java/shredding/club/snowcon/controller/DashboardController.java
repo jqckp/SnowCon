@@ -182,6 +182,7 @@ public class DashboardController implements Initializable
                     break;
 
                 case SUGAR_MOUNTAIN:
+                    displaySugarMountainWeather(data.get(City.SUGAR_MOUNTAIN));
                     break;
 
             }
@@ -210,6 +211,18 @@ public class DashboardController implements Initializable
         beechWeatherIcon.setImage(new Image(getClass().getResourceAsStream(
             String.format("../view/resources/weather_icons/%s.png", weather.getIcon()))));
         
+    }
+
+    private void displaySugarMountainWeather(Weather weather)
+    {
+        sugarMountainTemperature.setText(String.valueOf(weather.getTemp()));
+        sugarMountainWindSpeed.setText(String.valueOf(weather.getWind_spd()));
+        sugarMountainVisibility.setText(String.valueOf(weather.getVis()));
+        sugarMountainSnow.setText(String.format("%.2f",weather.getSnow()));
+        sugarMountainPrecipitation.setText(String.format("%.2f", weather.getPrecip()));
+        sugarWeatherIcon.setImage(new Image(getClass().getResourceAsStream(
+            String.format("../view/resources/weather_icons/%s.png", weather.getIcon()))));
+
     }
 
 
