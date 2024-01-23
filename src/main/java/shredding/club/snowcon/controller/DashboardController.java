@@ -202,6 +202,13 @@ public class DashboardController implements Initializable
 
     private void displayBeechMountainWeather(Weather weather)
     {
+        beechMountainTemperature.setText(String.valueOf(weather.getTemp()));
+        beechMountainWindspeed.setText(String.valueOf(weather.getWind_spd()));
+        beechMountainVisibility.setText(String.valueOf(weather.getVis()));
+        beechMountainSnow.setText(String.format("%.2f",weather.getSnow()));
+        beechMountainPrecipitation.setText(String.format("%.2f", weather.getPrecip()));
+        beechWeatherIcon.setImage(new Image(getClass().getResourceAsStream(
+            String.format("../view/resources/weather_icons/%s.png", weather.getIcon()))));
         
     }
 
