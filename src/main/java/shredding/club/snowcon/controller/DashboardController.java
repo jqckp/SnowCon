@@ -178,6 +178,7 @@ public class DashboardController implements Initializable
                     break;
                 
                 case BEECH_MOUNTAIN:
+                    displayBeechMountainWeather(data.get(City.BEECH_MOUNTAIN));
                     break;
 
                 case SUGAR_MOUNTAIN:
@@ -199,7 +200,7 @@ public class DashboardController implements Initializable
             String.format("../view/resources/weather_icons/%s.png", weather.getIcon()))));
     }
 
-    private void displayBeechMountainWeather()
+    private void displayBeechMountainWeather(Weather weather)
     {
         
     }
