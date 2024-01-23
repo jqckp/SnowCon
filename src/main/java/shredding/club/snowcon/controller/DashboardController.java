@@ -60,6 +60,21 @@ public class DashboardController implements Initializable
     @FXML
     private Label appSkiPrecipitation;
 
+    @FXML
+    private Label beechMountainTemperature;
+
+    @FXML
+    private Label beechMountainWindspeed;
+
+    @FXML
+    private Label beechMountainVisibility;
+
+    @FXML
+    private Label beechMountainSnow;
+
+    @FXML
+    private Label beechMountainPrecipitation;
+
 
     private Utility util = new Utility();
 
