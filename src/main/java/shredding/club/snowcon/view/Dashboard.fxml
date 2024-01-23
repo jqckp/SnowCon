@@ -188,27 +188,27 @@
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="appSkiTemperature2" alignment="CENTER" layoutX="103.0" layoutY="8.0" text="(temp)" textFill="WHITE">
+            <Label fx:id="sugarMountainTemperature" alignment="CENTER" layoutX="103.0" layoutY="8.0" text="(temp)" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="appSkiWindSpeed2" alignment="CENTER" layoutX="103.0" layoutY="33.0" text="(temp)" textFill="WHITE">
+            <Label fx:id="sugarMountainWindSpeed" alignment="CENTER" layoutX="103.0" layoutY="33.0" text="(temp)" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="appSkiVisibility2" alignment="CENTER" layoutX="103.0" layoutY="59.0" text="(temp)" textFill="WHITE">
+            <Label fx:id="sugarMountainVisibility" alignment="CENTER" layoutX="103.0" layoutY="59.0" text="(temp)" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="appSkiSnow2" alignment="CENTER" layoutX="103.0" layoutY="84.0" text="(temp)" textFill="WHITE">
+            <Label fx:id="sugarMountainSnow" alignment="CENTER" layoutX="103.0" layoutY="84.0" text="(temp)" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="appSkiPrecipitation2" alignment="CENTER" layoutX="103.0" layoutY="109.0" text="(temp)" textFill="WHITE">
+            <Label fx:id="sugarMountainPrecipitation" alignment="CENTER" layoutX="103.0" layoutY="109.0" text="(temp)" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
