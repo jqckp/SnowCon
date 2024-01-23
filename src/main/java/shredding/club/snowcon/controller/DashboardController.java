@@ -79,7 +79,7 @@ public class DashboardController implements Initializable
             //data = Weather.callWeatherAPI(Key.API_KEY, Unit.AMERICAN);
             //displayWeatherConditions(data);
 
-           getWebsiteData();
+            //getWebsiteData();
 
             
             
@@ -114,8 +114,8 @@ public class DashboardController implements Initializable
     {
         Runnable appSkiWebscrape =  () ->
         {
-            // AppSkiMountain appSki = new AppSkiMountain();
-            // appSki.collectData();
+            AppSkiMountain appSki = new AppSkiMountain();
+            appSki.collectData();
         };
 
         Runnable beechMountainWebscrape = () -> 
@@ -167,6 +167,11 @@ public class DashboardController implements Initializable
         appSkiPrecipitation.setText(String.format("%.2f", weather.getPrecip()));
         appSkiWeatherIcon.setImage(new Image(getClass().getResourceAsStream(
             String.format("../view/resources/weather_icons/%s.png", weather.getIcon()))));
+    }
+
+    private void displayBeechMountainWeather()
+    {
+        
     }
 
 
