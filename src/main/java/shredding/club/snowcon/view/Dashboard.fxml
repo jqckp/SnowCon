@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@resources/styling/Dashboard.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="shredding.club.snowcon.controller.DashboardController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="root" stylesheets="@resources/styling/Dashboard.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="shredding.club.snowcon.controller.DashboardController">
    <children>
       <ImageView id="beechWeatherIcon" fx:id="beechWeatherIcon" fitHeight="76.0" fitWidth="100.0" layoutX="262.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -133,27 +133,27 @@
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="appSkiTemperature1" alignment="CENTER" layoutX="103.0" layoutY="8.0" text="(temp)" textFill="WHITE">
+            <Label fx:id="beechMountainTemperature" alignment="CENTER" layoutX="103.0" layoutY="8.0" text="(temp)" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="appSkiWindSpeed1" alignment="CENTER" layoutX="103.0" layoutY="33.0" text="(temp)" textFill="WHITE">
+            <Label fx:id="beechMountainWindSpeed" alignment="CENTER" layoutX="103.0" layoutY="33.0" text="(temp)" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="appSkiVisibility1" alignment="CENTER" layoutX="103.0" layoutY="59.0" text="(temp)" textFill="WHITE">
+            <Label fx:id="beechMountainVisibility" alignment="CENTER" layoutX="103.0" layoutY="59.0" text="(temp)" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="appSkiSnow1" alignment="CENTER" layoutX="103.0" layoutY="84.0" text="(temp)" textFill="WHITE">
+            <Label fx:id="beechMountainSnow" alignment="CENTER" layoutX="103.0" layoutY="84.0" text="(temp)" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="appSkiPrecipitation1" alignment="CENTER" layoutX="103.0" layoutY="109.0" text="(temp)" textFill="WHITE">
+            <Label fx:id="beechMountainPrecipitation" alignment="CENTER" layoutX="103.0" layoutY="109.0" text="(temp)" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
