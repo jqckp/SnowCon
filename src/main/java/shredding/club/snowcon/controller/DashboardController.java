@@ -106,7 +106,10 @@ public class DashboardController implements Initializable
         
         if (!initialized)
         {
-            displayWeatherConditions(Weather.callWeatherAPI(Key.API_KEY, Unit.AMERICAN));
+
+            DashboardController.data = Weather.callWeatherAPI(Key.API_KEY, Unit.AMERICAN);
+
+            displayWeatherConditions(data);
 
             //getWebsiteData();
 
@@ -179,7 +182,6 @@ public class DashboardController implements Initializable
     private void displayWeatherConditions(HashMap<City, Weather> data)
     {
 
-        DashboardController.data = data;
 
         for (City city : City.values())
         {
