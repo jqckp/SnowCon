@@ -93,7 +93,7 @@ public class DashboardController implements Initializable
 
     private Utility util = new Utility();
 
-    private HashMap<City, Weather> data;
+    private static HashMap<City, Weather> data;
 
 
     
@@ -106,18 +106,26 @@ public class DashboardController implements Initializable
         
         if (!initialized)
         {
-            data = Weather.callWeatherAPI(Key.API_KEY, Unit.AMERICAN);
-            displayWeatherConditions(data);
+            displayWeatherConditions(Weather.callWeatherAPI(Key.API_KEY, Unit.AMERICAN));
 
-            getWebsiteData();
+            //getWebsiteData();
 
             
+
             
             initialized = true;
         }
 
-        //displayWeatherConditions(data);
+        displayWeatherConditions(data);
         
+    }
+
+    @FXML
+    private void seeSlopeConditions(ActionEvent event)
+    {
+
+        
+
     }
     
 
@@ -170,6 +178,9 @@ public class DashboardController implements Initializable
 
     private void displayWeatherConditions(HashMap<City, Weather> data)
     {
+
+        DashboardController.data = data;
+
         for (City city : City.values())
         {
             switch (city) {
