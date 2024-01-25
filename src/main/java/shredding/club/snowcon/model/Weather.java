@@ -129,6 +129,7 @@ public class Weather
 
     public static HashMap<City, Weather> callWeatherAPI(String key, Unit unit)
     {
+        System.out.println("Api has been called");
         client = HttpClient.newHttpClient();
 
         weatherData = new HashMap<>();
@@ -151,7 +152,7 @@ public class Weather
 
             } catch (URISyntaxException | IOException | InterruptedException ex) 
             {
-                ex.printStackTrace();
+                System.out.println("API call failed");
             }
         }
 
