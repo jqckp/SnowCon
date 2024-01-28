@@ -7,8 +7,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
-public class AppSkiMountain 
+public class AppSkiMountain implements Webscrape
 {
     private static final String SLOPE_REPORT_URL = "https://appskimtn.com/slope-report";
 
@@ -39,11 +40,21 @@ public class AppSkiMountain
     private boolean theHighline;
 
 
+    @Override
     public void collectData()
     {
-        driver = new ChromeDriver();
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--headless");
+
+
+        driver = new ChromeDriver(chromeOptions);
+        
 
         driver.get(SLOPE_REPORT_URL);
+
+        driver.close();
+
+        
     }
 
     
