@@ -87,9 +87,6 @@ public class DashboardController
     @FXML
     private Label sugarMountainPrecipitation;
 
-
-    private Utility util = new Utility();
-
     private static HashMap<City, Weather> weatherData;
 
 
@@ -117,19 +114,19 @@ public class DashboardController
     @FXML
     private void seeAppSkiConditions(ActionEvent event)
     {
-        util.switchScene(event, APP_SKI_MTN_VIEW);
+        Utility.switchScene(event, APP_SKI_MTN_VIEW);
     }
 
     @FXML
     private void seeBeechConditions(ActionEvent event)
     {
-        util.switchScene(event, BEECH_MTN_VIEW);
+        Utility.switchScene(event, BEECH_MTN_VIEW);
     }
 
     @FXML
     private void seeSugarConditions(ActionEvent event)
     {
-        util.switchScene(event, SUGAR_MTN_VIEW);
+        Utility.switchScene(event, SUGAR_MTN_VIEW);
     }
 
 
