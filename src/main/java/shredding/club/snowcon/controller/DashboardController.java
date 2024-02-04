@@ -93,7 +93,7 @@ public class DashboardController implements Initializable
 
     private Utility util = new Utility();
 
-    private static HashMap<City, Weather> data;
+    private static HashMap<City, Weather> weatherData;
 
 
     
@@ -106,28 +106,35 @@ public class DashboardController implements Initializable
         
         if (!initialized)
         {
+            weatherData = Weather.callWeatherAPI(Key.API_KEY, Unit.AMERICAN);
 
-            DashboardController.data = Weather.callWeatherAPI(Key.API_KEY, Unit.AMERICAN);
+            getWebsiteData();
 
-            displayWeatherConditions(data);
-
-            //getWebsiteData();
-
-            
-
-            
             initialized = true;
         }
 
-        displayWeatherConditions(data);
+        displayWeatherConditions(weatherData);
         
     }
 
     @FXML
     private void seeSlopeConditions(ActionEvent event)
     {
-
         
+
+        if (event.getSource().equals(viewAppSkiConditions))
+        {
+            util.switchScene(event, APP_SKI_MTN_VIEW);
+            return;
+        }
+
+        else if (event.getSource().equals(viewBeechConditions))
+        {
+            util.switchScene(event, BEECH_MTN_VIEW);
+            return;
+        }
+        
+        util.switchScene(event, SUGAR_MTN_VIEW);
 
     }
     
@@ -155,6 +162,7 @@ public class DashboardController implements Initializable
     {
         Runnable appSkiWebscrape =  () ->
         {
+            System.out.println("Getting data from App Ski Mountain Site");
             AppSkiMountain appSki = new AppSkiMountain();
             appSki.collectData();
         };
