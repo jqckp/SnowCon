@@ -86,10 +86,8 @@ public class Weather
     private static HashMap<City, Weather> weatherData;
 
 
-    public Weather()
-    {
+    public Weather(){};
     
-    }
 
     public Weather
     (
