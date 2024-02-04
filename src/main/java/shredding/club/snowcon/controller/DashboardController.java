@@ -117,26 +117,7 @@ public class DashboardController implements Initializable
         
     }
 
-    @FXML
-    private void seeSlopeConditions(ActionEvent event)
-    {
-        
-
-        if (event.getSource().equals(viewAppSkiConditions))
-        {
-            util.switchScene(event, APP_SKI_MTN_VIEW);
-            return;
-        }
-
-        else if (event.getSource().equals(viewBeechConditions))
-        {
-            util.switchScene(event, BEECH_MTN_VIEW);
-            return;
-        }
-        
-        util.switchScene(event, SUGAR_MTN_VIEW);
-
-    }
+    
     
 
     @FXML
