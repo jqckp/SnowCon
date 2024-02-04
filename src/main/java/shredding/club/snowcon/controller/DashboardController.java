@@ -2,12 +2,9 @@ package shredding.club.snowcon.controller;
 
 import shredding.club.snowcon.model.AppSkiMountain;
 import shredding.club.snowcon.model.City;
-import java.net.URL;
 import java.util.HashMap;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -18,7 +15,7 @@ import shredding.club.snowcon.model.Weather;
 
 
 
-public class DashboardController implements Initializable
+public class DashboardController
 {
 
     private static final String APP_SKI_MTN_VIEW = "../view/AppSkiMountain.fxml";
@@ -97,11 +94,8 @@ public class DashboardController implements Initializable
 
 
     
-
-
-
-    @Override
-    public void initialize(URL arg0, ResourceBundle arg1) 
+    @FXML
+    public void initialize() 
     {
         
         if (!initialized)
