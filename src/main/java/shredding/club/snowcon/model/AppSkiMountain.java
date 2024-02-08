@@ -1,6 +1,8 @@
 package shredding.club.snowcon.model;
 
 
+import java.net.SocketException;
+import java.util.HashMap;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -39,10 +41,25 @@ public class AppSkiMountain implements Webscrape
 
     private boolean theHighline;
 
+    private static Runnable startAppSkiWebscrape =  () ->
+    {
+        System.out.println("Getting data from App Ski Mountain Site");
+        //AppSkiMountain appSki = new AppSkiMountain();
+        //appSki.collectData();
+    };
+
+    
+
+    public static Thread webscrape()
+    {
+        return new Thread(startAppSkiWebscrape);
+    }
+
 
     @Override
     public void collectData()
     {
+        
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--headless");
 
@@ -52,10 +69,38 @@ public class AppSkiMountain implements Webscrape
 
         driver.get(SLOPE_REPORT_URL);
 
-        driver.close();
+
+        WebElement slopeDeets = driver.findElement(By.className("slope-report__status"));
+        
+        extractSlopeInformation(slopeDeets);
+        
 
         
+        
+        
+        driver.close();
+        driver.quit();
+        
+
+        
+        
     }
+
+    private void extractSlopeInformation(WebElement slopeDeets)
+    {
+        List<WebElement> slopeNames = slopeDeets.findElements(By.className("slope-report__status-title"));
+        List<WebElement> openOrClosed =  slopeDeets.findElements(By.className("slope-report__status-status"));
+
+        HashMap<String, String> openSlopes = new HashMap<>();
+
+        for (int i = 0; i < slopeNames.size(); i++)
+        {
+            openSlopes.put(slopeNames.get(i).getText(), openOrClosed.get(i).getText());
+        }
+
+    }
+
+    
 
     
 }
