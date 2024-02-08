@@ -1,6 +1,7 @@
 package shredding.club.snowcon.controller;
 
 import shredding.club.snowcon.model.AppSkiMountain;
+import shredding.club.snowcon.model.BeechMountain;
 import shredding.club.snowcon.model.City;
 import java.util.HashMap;
 import javafx.event.ActionEvent;
@@ -10,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import shredding.club.snowcon.model.Key;
+import shredding.club.snowcon.model.SugarMountain;
 import shredding.club.snowcon.model.Unit;
 import shredding.club.snowcon.model.Weather;
 
@@ -99,7 +101,7 @@ public class DashboardController
         {
             weatherData = Weather.callWeatherAPI(Key.API_KEY, Unit.AMERICAN);
 
-            getWebsiteData();
+            loadWebsiteData();
 
             initialized = true;
         }
@@ -130,32 +132,12 @@ public class DashboardController
     }
 
 
-    private void getWebsiteData()
+    private void loadWebsiteData()
     {
-        Runnable appSkiWebscrape =  () ->
-        {
-            System.out.println("Getting data from App Ski Mountain Site");
-            AppSkiMountain appSki = new AppSkiMountain();
-            appSki.collectData();
-        };
-
-        Runnable beechMountainWebscrape = () -> 
-        {
-            System.out.println("Getting data from Beech Mountain site...");
-        };
-
-        Runnable sugarMountainWebscrape = () -> 
-        {
-            System.out.println("Getting data from Sugar Mountain site...");
-        };
-
-        Thread appThread = new Thread(appSkiWebscrape);
-        Thread beechThread = new Thread(beechMountainWebscrape);
-        Thread sugarThread = new Thread(sugarMountainWebscrape);
-
-        appThread.start();
-        beechThread.start();
-        sugarThread.start();
+        
+        AppSkiMountain.webscrape().start();
+        BeechMountain.webscrape().start();
+        SugarMountain.webscrape().start();
         
     }
 
@@ -185,6 +167,8 @@ public class DashboardController
 
     private void displayBlowingRockWeather(Weather weather)
     {
+        
+        
         appSkiTemperature.setText(String.valueOf(weather.getTemp()));
         appSkiWindSpeed.setText(String.valueOf(weather.getWind_spd()));
         appSkiVisibility.setText(String.valueOf(weather.getVis()));
