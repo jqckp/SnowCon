@@ -14,7 +14,7 @@ public class SugarMountainController implements Initializable
     @FXML
     private Button backToWeather;
 
-    private Utility util;
+    
 
     @Override
     public void initialize(URL location, ResourceBundle resources) 
@@ -25,8 +25,8 @@ public class SugarMountainController implements Initializable
     @FXML
     private void back(ActionEvent event)
     {
-        util = new Utility();
-        util.switchScene(event, "../view/Dashboard.fxml");
+        
+        Utility.switchScene(event, "../view/Dashboard.fxml");
     }
     
 }

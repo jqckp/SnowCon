@@ -59,7 +59,7 @@ public class AppSkiController implements Initializable
 
 
 
-    private Utility util;
+    
     
     private static boolean initialized;
 
@@ -82,8 +82,7 @@ public class AppSkiController implements Initializable
     @FXML
     private void back(ActionEvent event)
     {
-        util = new Utility();
-        util.switchScene(event, "../view/Dashboard.fxml");
+        Utility.switchScene(event, "../view/Dashboard.fxml");
     }
 
 
